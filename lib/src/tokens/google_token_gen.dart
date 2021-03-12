@@ -69,7 +69,7 @@ class GoogleTokenGenerator implements TokenProvider {
     return ['406398', (561666268 + 1526272306)];
   }
 
-  int wr(dynamic a, dynamic b) {
+  int? wr(dynamic a, dynamic b) {
     var d;
     try {
       for (var c = 0; c < b.toString().length - 2; c += 3) {
@@ -78,7 +78,7 @@ class GoogleTokenGenerator implements TokenProvider {
             ? (d[0].toString().codeUnitAt(0)) - 87
             : int.parse(d);
         d = '+' == b[c + 1] ? unsignedRightShift(a, d) : a << d;
-        a = '+' == b[c] ? (a + (d as int) & 4294967295) : a ^ d;
+        a = '+' == b[c] ? (a + (d as int?) & 4294967295) : a ^ d;
       }
       return a;
     } on Error catch (e) {
@@ -87,10 +87,10 @@ class GoogleTokenGenerator implements TokenProvider {
     }
   }
 
-  int unsignedRightShift(var a, var b) {
+  int? unsignedRightShift(var a, var b) {
     var m;
     if (b >= 32 || b < -32) {
-      m = (b / 32) as int;
+      m = (b / 32) as int?;
       b = b - (m * 32);
     }
 

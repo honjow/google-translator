@@ -19,7 +19,7 @@ void main() {
   test("Get the right auto detected language", () async {
     var translator = GoogleTranslator();
     var translation = await translator.translate('Translation', to: 'es');
-    expect(translation.sourceLanguage.code, 'en');
+    expect(translation.sourceLanguage!.code, 'en');
   });
 
   // this is because sometimes Google Translate doesn't translate well
@@ -38,10 +38,10 @@ void main() {
   test('Translation stuff', () async {
     var translator = GoogleTranslator(client: ClientType.extensionGT);
     var t = await translator.translate('perro', to: 'ru');
-    expect(t.targetLanguage.name, 'Russian');
+    expect(t.targetLanguage!.name, 'Russian');
     expect(t.text, 'собака');
     expect(t.source, 'perro');
-    expect(t.sourceLanguage.name, 'Spanish');
+    expect(t.sourceLanguage!.name, 'Spanish');
   });
 
   test('Language stuff', () {

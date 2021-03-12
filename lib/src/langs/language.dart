@@ -1,12 +1,12 @@
 /// Language object with name and code (ISO)
 class Language {
-  final String name;
+  final String? name;
   final String code;
 
   Language(this.code, this.name);
 
   @override
-  String toString() => name;
+  String toString() => name!;
 }
 
 /// Language list containing all languages supported by Google Translate API
